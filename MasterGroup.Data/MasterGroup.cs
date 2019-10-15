@@ -10,9 +10,9 @@ namespace MasterGroup.Data
     public class MasterGroup
     {
         [Key]
-        public int GroupId { get; set; }
+        public Guid GroupId { get; set; }
         [Required]
-        public string OwnerId { get; set; }
+        public Guid OwnerId { get; set; }
         [Required]
         [Display(Name="Subject of Mastery")]
         public string Subject { get; set; }

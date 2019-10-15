@@ -56,11 +56,21 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MasterGroup.cs" />
+    <Compile Include="Migrations\201910151259150_HopefullyThisWorks.cs" />
+    <Compile Include="Migrations\201910151259150_HopefullyThisWorks.Designer.cs">
+      <DependentUpon>201910151259150_HopefullyThisWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910151259150_HopefullyThisWorks.resx">
+      <DependentUpon>201910151259150_HopefullyThisWorks.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
