@@ -20,20 +20,20 @@ namespace MasterGroupWebApp.Controllers
             return View(model);
         }
         //get method! down below
-    public ActionResult Create()
+        public ActionResult Create()
         {
             return View();
         }
-     [HttpPost]
-     [ValidateAntiForgeryToken]
-     public ActionResult Create(MasterGroupCreate model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(MasterGroupCreate model)
         {
             if (!ModelState.IsValid) return View(model); //if its wrong then return the view so they can fix it
 
             var service = CreateMasterGroupService();
             //if its right step out of this loop interact with the service layer and create a new group model that is linked to their profile.
 
-            if(service.CreateMasterGroup(model))
+            if (service.CreateMasterGroup(model))
             {
                 TempData["SaveResult"] = "Your note was created.";
                 return RedirectToAction("Index");
@@ -44,7 +44,7 @@ namespace MasterGroupWebApp.Controllers
             return View(model);
         }
 
-        public ActionResult Detials (int id)
+        public ActionResult Detials(int id)
         {
             var svc = CreateMasterGroupService();
             var model = svc.GetMasterGroupById(id);
@@ -52,6 +52,46 @@ namespace MasterGroupWebApp.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateMasterGroupService();
+            var detail = service.GetMasterGroupById(id);
+            var model =
+                new MasterGroupEdit
+                {
+                    GroupId = detail.GroupId,
+                    Subject = detail.Subject,
+                    Name = detail.Name,
+                    Description = detail.Description,
+                    CheckItem1 = detail.CheckItem1,
+                    CheckItem2 = detail.CheckItem2,
+                    CheckItem3 = detail.CheckItem3,
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, MasterGroupEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.GroupId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateMasterGroupService();
+            if(service.UpdateMasterGroup(model))
+            {
+                TempData["SaveResult"] = "Your Master Group was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Your Master Group could not be updated.");
+
+            return View();
+        }
         private MasterGroupService CreateMasterGroupService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -59,5 +99,6 @@ namespace MasterGroupWebApp.Controllers
             return service;
         }
     }
+    
 
 }

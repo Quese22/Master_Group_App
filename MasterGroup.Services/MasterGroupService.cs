@@ -87,6 +87,27 @@ namespace MasterGroup.Services
                     };
             }
         }
+
+        public bool UpdateMasterGroup(MasterGroupEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .MGroups
+                        .Single(e => e.GroupId == model.GroupId && e.OwnerId == _userID);
+
+                entity.GroupId = model.GroupId;
+                entity.Subject = model.Subject;
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.CheckItem1 = model.CheckItem1;
+                entity.CheckItem2 = model.CheckItem2;
+                entity.CheckItem3 = model.CheckItem3;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
     
