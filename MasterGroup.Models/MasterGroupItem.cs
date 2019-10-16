@@ -11,8 +11,9 @@ namespace MasterGroup.Models
     {   [Required]
         [Display(Name="User")]
         public Guid OwnerID { get; set; }
+        public string Username { get; set; }
         [Key]
-        public Guid GroupID { get; set; }
+        public int GroupID { get; set; }
         [Required]
         [Display(Name = "Subject of Mastery")]
         public string Subject { get; set; }

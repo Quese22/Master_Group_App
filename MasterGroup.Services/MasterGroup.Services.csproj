@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MasterGroupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MasterGroup.Data\MasterGroup.Data.csproj">
+      <Project>{eaf7ab30-1ecb-4821-97fd-ed6ef384e748}</Project>
+      <Name>MasterGroup.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MasterGroup.Models\MasterGroup.Models.csproj">
+      <Project>{9d047bc4-3f8b-42dd-b158-c864ff7e5da6}</Project>
+      <Name>MasterGroup.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
