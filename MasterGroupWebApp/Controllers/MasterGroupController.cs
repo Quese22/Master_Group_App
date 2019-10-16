@@ -92,6 +92,29 @@ namespace MasterGroupWebApp.Controllers
 
             return View();
         }
+
+        //Delete method requires a full detials preview before you delete the set up for view the detials first and then the set up to delete after
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateMasterGroupService();
+            var model = svc.GetMasterGroupById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteGroup(int id)
+        {
+            var service = CreateMasterGroupService();
+            service.DeleteMasterGroup(id);
+
+            TempData["SaveResult"] = "Your Group was successfully deleted";
+
+            return RedirectToAction("Index");
+        }
         private MasterGroupService CreateMasterGroupService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

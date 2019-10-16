@@ -59,7 +59,7 @@ namespace MasterGroup.Services
                                     CreatedUtc = e.CreatedUtc,
                                 }
                         ).ToList();
-                
+
 
                 return query;
             }
@@ -67,7 +67,7 @@ namespace MasterGroup.Services
 
         public MasterGroupDetails GetMasterGroupById(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -104,6 +104,20 @@ namespace MasterGroup.Services
                 entity.CheckItem1 = model.CheckItem1;
                 entity.CheckItem2 = model.CheckItem2;
                 entity.CheckItem3 = model.CheckItem3;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteMasterGroup(int groupId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .MGroups
+                        .Single(e => e.GroupId == groupId && e.OwnerId == _userID);
+                ctx.MGroups.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
