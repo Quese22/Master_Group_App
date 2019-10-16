@@ -44,6 +44,14 @@ namespace MasterGroupWebApp.Controllers
             return View(model);
         }
 
+        public ActionResult Detials (int id)
+        {
+            var svc = CreateMasterGroupService();
+            var model = svc.GetMasterGroupById(id);
+
+            return View(model);
+        }
+
         private MasterGroupService CreateMasterGroupService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

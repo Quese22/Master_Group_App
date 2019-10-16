@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MasterGroupCreate.cs" />
+    <Compile Include="MasterGroupDetails.cs" />
     <Compile Include="MasterGroupItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

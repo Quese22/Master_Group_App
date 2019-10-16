@@ -64,6 +64,29 @@ namespace MasterGroup.Services
                 return query;
             }
         }
+
+        public MasterGroupDetails GetMasterGroupById(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .MGroups
+                    .Single(e => e.GroupId == id && e.OwnerId == _userID);
+
+                return
+                    new MasterGroupDetails
+                    {
+                        GroupId = entity.GroupId,
+                        Subject = entity.Subject,
+                        Name = entity.Name,
+                        Description = entity.Description,
+                        CheckItem1 = entity.CheckItem1,
+                        CheckItem2 = entity.CheckItem2,
+                        CheckItem3 = entity.CheckItem3,
+                    };
+            }
+        }
     }
 }
     
