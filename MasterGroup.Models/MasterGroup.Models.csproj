@@ -54,15 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MasterGroupCreate.cs" />
-    <Compile Include="MasterGroupDetails.cs" />
-    <Compile Include="MasterGroupEdit.cs" />
-    <Compile Include="MasterGroupItem.cs" />
+    <Compile Include="MGModels\MasterGroupCreate.cs" />
+    <Compile Include="MGModels\MasterGroupDetails.cs" />
+    <Compile Include="MGModels\MasterGroupEdit.cs" />
+    <Compile Include="MGModels\MasterGroupItem.cs" />
+    <Compile Include="PostCreate.cs" />
+    <Compile Include="PostListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="General\App.config" />
+    <None Include="General\packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

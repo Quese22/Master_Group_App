@@ -56,11 +56,22 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MasterGroup.cs" />
+    <Compile Include="Migrations\201910171911576_NewOne.cs" />
+    <Compile Include="Migrations\201910171911576_NewOne.Designer.cs">
+      <DependentUpon>201910171911576_NewOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910171911576_NewOne.resx">
+      <DependentUpon>201910171911576_NewOne.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

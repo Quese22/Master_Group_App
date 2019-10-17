@@ -32,6 +32,7 @@ namespace MasterGroup.Data
             return new ApplicationDbContext();
         }
         public DbSet<MasterGroup> MGroups { get; set; }
+        public DbSet<Post> MGPosts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

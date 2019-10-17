@@ -76,7 +76,11 @@
 
     </dl>
 </div>
+@{
+    @Html.Partial("../Shared/Partial/_Create", new MasterGroup.Models.PostCreate(),new ViewDataDictionary { { "GroupId", Model.GroupId } })
+    //Copy of school photos to give to your FRIENDS mom.//
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GroupId}) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GroupId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
