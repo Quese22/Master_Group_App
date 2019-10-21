@@ -59,6 +59,7 @@
     <Compile Include="MGModels\MasterGroupEdit.cs" />
     <Compile Include="MGModels\MasterGroupItem.cs" />
     <Compile Include="PostCreate.cs" />
+    <Compile Include="PostDetail.cs" />
     <Compile Include="PostListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

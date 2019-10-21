@@ -30,13 +30,47 @@ namespace MasterGroupWebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PostCreate model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
+            if (!ModelState.IsValid) return View(model);
 
-            }
             var service = CreatePostService();
-            service.CreatePost(model);
+            if(service.CreatePost(model))
+            {
+            return RedirectToAction("Index"); // I want to figure out how to have the comment then display on the page instead of a reroute to the index
+            };
+
+            ModelState.AddModelError("", "Note could not be created.");
+                
+                return View(model);
+        }
+
+        public ActionResult Details (int id)
+        {
+            var svc = CreatePostService();
+            var model = svc.GetPostById(id);
+
+            return View(model);
+        }
+
+        //Get//
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreatePostService();
+            var model = svc.GetPostById(id);
+
+            return View(model);
+        }
+
+        //Post!//
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreatePostService();
+
+            service.DeletePost(id);
+            TempData["SaveResult"] = "Your post was deleted";
 
             return RedirectToAction("Index");
         }

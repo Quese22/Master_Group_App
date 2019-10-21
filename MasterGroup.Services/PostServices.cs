@@ -61,5 +61,40 @@ namespace MasterGroup.Services
                 return query.ToArray();
             }
         }
+
+        public PostDetail GetPostById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .MGPosts
+                    .Single(e => e.PostId == id && e.OwnerId == _userId);
+                return
+                    new PostDetail
+                    {
+                        PostId = entity.PostId,
+                        Username = entity.Username,
+                        Title = entity.Title,
+                        Content = entity.Content,
+                        PostDate = entity.PostDate
+                    };
+            }
+        }
+
+        public bool DeletePost(int postId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .MGPosts
+                    .Single(e => e.PostId == postId && e.OwnerId == _userId);
+
+                ctx.MGPosts.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
