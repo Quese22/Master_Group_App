@@ -23,14 +23,16 @@ namespace MasterGroup.Services
             {
                 var username = ctx.Users.Single(e => e.Id == _userId.ToString()).UserName;
 
-            var entity =
-                new Post()
-                {
-                    OwnerId = _userId,
-                    GroupId = model.GroupID,
-                    Title =model.Title,
-                    Content = model.Content,
-                };
+                var entity =
+                    new Post()
+                    {
+                        OwnerId = _userId,
+                        Username = username,
+                        GroupId = model.GroupID,
+                        Title = model.Title,
+                        Content = model.Content,
+                        PostDate = DateTimeOffset.Now
+                    };
 
                 ctx.MGPosts.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -39,7 +41,7 @@ namespace MasterGroup.Services
         }
         public IEnumerable<PostListItem> GetPost()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
@@ -52,7 +54,33 @@ namespace MasterGroup.Services
                             Title = e.Title,
                             Content = e.Content,
                             PostId = e.PostId,
-                            PostDate=e.PostDate,
+                            PostDate = e.PostDate,
+                        }
+
+
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<PostListItem> GetPostByGroupId(int GroupId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .MGPosts
+                    .Where(e => e.OwnerId == _userId && e.GroupId == GroupId)
+                    .Select(
+                        e =>
+                        new PostListItem
+                        {
+                            Title = e.Title,
+                            Content = e.Content,
+                            PostId = e.PostId,
+                            PostDate = e.PostDate,
+                            GroupId=e.GroupId
+
                         }
 
 
@@ -77,14 +105,15 @@ namespace MasterGroup.Services
                         Username = entity.Username,
                         Title = entity.Title,
                         Content = entity.Content,
-                        PostDate = entity.PostDate
+                        PostDate = entity.PostDate,
+                        GroupId=entity.GroupId
                     };
             }
         }
 
         public bool DeletePost(int postId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

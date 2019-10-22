@@ -11,8 +11,6 @@ namespace MasterGroup.Models
     {
         public int GroupID { get; set; }
         [Required]
-        public string Username { get; set; }
-        [Required]
         public string Title { get; set; }
         [Required]
         [Display(Name ="Message")]

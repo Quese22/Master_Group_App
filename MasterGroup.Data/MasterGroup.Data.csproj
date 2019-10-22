@@ -54,11 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GroupCheckLists.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MasterGroup.cs" />
-    <Compile Include="Migrations\201910171911576_NewOne.cs" />
-    <Compile Include="Migrations\201910171911576_NewOne.Designer.cs">
-      <DependentUpon>201910171911576_NewOne.cs</DependentUpon>
+    <Compile Include="Migrations\201910221541244_pleaseWork.cs" />
+    <Compile Include="Migrations\201910221541244_pleaseWork.Designer.cs">
+      <DependentUpon>201910221541244_pleaseWork.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
@@ -69,8 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910171911576_NewOne.resx">
-      <DependentUpon>201910171911576_NewOne.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910221541244_pleaseWork.resx">
+      <DependentUpon>201910221541244_pleaseWork.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

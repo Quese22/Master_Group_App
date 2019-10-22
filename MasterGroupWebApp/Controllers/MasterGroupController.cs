@@ -35,11 +35,11 @@ namespace MasterGroupWebApp.Controllers
 
             if (service.CreateMasterGroup(model))
             {
-                TempData["SaveResult"] = "Your note was created.";
+                TempData["SaveResult"] = "Your Group was created.";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Note could not be created.");
+            ModelState.AddModelError("", "Group could not be created.");
 
             return View(model);
         }
@@ -48,6 +48,10 @@ namespace MasterGroupWebApp.Controllers
         {
             var svc = CreateMasterGroupService();
             var model = svc.GetMasterGroupById(id);
+
+            var svc2 = new PostServices(Guid.Parse(User.Identity.GetUserId()));
+
+            ViewBag.PostList = svc2.GetPostByGroupId(id);
 
             return View(model);
         }

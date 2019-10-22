@@ -3,23 +3,24 @@ namespace MasterGroup.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewOne : DbMigration
+    public partial class pleaseWork : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Post",
+                "dbo.GroupCheckLists",
                 c => new
                     {
-                        PostId = c.Int(nullable: false, identity: true),
-                        OwnerId = c.Guid(nullable: false),
-                        Username = c.String(),
-                        Title = c.String(nullable: false),
-                        Content = c.String(nullable: false, maxLength: 1500),
+                        ListId = c.Int(nullable: false, identity: true),
                         GroupId = c.Int(nullable: false),
-                        PostDate = c.DateTimeOffset(nullable: false, precision: 7),
+                        Check1 = c.String(),
+                        Check2 = c.String(),
+                        Check3 = c.String(),
+                        ModifiedUtc = c.DateTimeOffset(precision: 7),
                     })
-                .PrimaryKey(t => t.PostId);
+                .PrimaryKey(t => t.ListId)
+                .ForeignKey("dbo.MasterGroup", t => t.GroupId, cascadeDelete: true)
+                .Index(t => t.GroupId);
             
             CreateTable(
                 "dbo.MasterGroup",
@@ -37,6 +38,22 @@ namespace MasterGroup.Data.Migrations
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                     })
                 .PrimaryKey(t => t.GroupId);
+            
+            CreateTable(
+                "dbo.Post",
+                c => new
+                    {
+                        PostId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
+                        Username = c.String(nullable: false),
+                        Title = c.String(nullable: false),
+                        Content = c.String(nullable: false, maxLength: 1500),
+                        GroupId = c.Int(nullable: false),
+                        PostDate = c.DateTimeOffset(nullable: false, precision: 7),
+                    })
+                .PrimaryKey(t => t.PostId)
+                .ForeignKey("dbo.MasterGroup", t => t.GroupId, cascadeDelete: true)
+                .Index(t => t.GroupId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -116,17 +133,22 @@ namespace MasterGroup.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Post", "GroupId", "dbo.MasterGroup");
+            DropForeignKey("dbo.GroupCheckLists", "GroupId", "dbo.MasterGroup");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Post", new[] { "GroupId" });
+            DropIndex("dbo.GroupCheckLists", new[] { "GroupId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
-            DropTable("dbo.MasterGroup");
             DropTable("dbo.Post");
+            DropTable("dbo.MasterGroup");
+            DropTable("dbo.GroupCheckLists");
         }
     }
 }

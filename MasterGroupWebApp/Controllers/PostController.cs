@@ -31,14 +31,14 @@ namespace MasterGroupWebApp.Controllers
         public ActionResult Create(PostCreate model)
         {
             if (!ModelState.IsValid) return View(model);
+            ModelState.AddModelError("", "Post could not be created.");
 
             var service = CreatePostService();
             if(service.CreatePost(model))
             {
-            return RedirectToAction("Index"); // I want to figure out how to have the comment then display on the page instead of a reroute to the index
+            return RedirectToAction("Detials", "MasterGroup", new { id = model.GroupID}) ; // I want to figure out how to have the comment then display on the page instead of a reroute to the index
             };
 
-            ModelState.AddModelError("", "Note could not be created.");
                 
                 return View(model);
         }
@@ -65,17 +65,17 @@ namespace MasterGroupWebApp.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePost(int id)
+        public ActionResult DeletePost(int id, int groupId)
         {
             var service = CreatePostService();
 
             service.DeletePost(id);
             TempData["SaveResult"] = "Your post was deleted";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Detials","MasterGroup",new { id = groupId});
         }
 
-        private PostServices CreatePostService()
+        public PostServices CreatePostService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new PostServices(userId);

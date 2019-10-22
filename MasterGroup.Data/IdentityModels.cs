@@ -33,6 +33,8 @@ namespace MasterGroup.Data
         }
         public DbSet<MasterGroup> MGroups { get; set; }
         public DbSet<Post> MGPosts { get; set; }
+
+        public DbSet<GroupCheckLists> MGLists { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
