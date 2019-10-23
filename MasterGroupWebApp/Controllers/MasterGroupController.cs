@@ -47,7 +47,7 @@ namespace MasterGroupWebApp.Controllers
             var service = CreateMasterGroupService();
             //if its right step out of this loop interact with the service layer and create a new group model that is linked to their profile.
 
-            if (service.CreateMasterGroup(model))
+            if (service.CreateMasterGroup(model, User.Identity.Name))
             {
                 TempData["SaveResult"] = "Your Group was created.";
                 return RedirectToAction("Index");

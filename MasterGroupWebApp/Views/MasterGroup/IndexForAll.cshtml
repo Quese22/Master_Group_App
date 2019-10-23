@@ -44,7 +44,11 @@
                 @Html.DisplayFor(modelItem => item.CreatedUtc)
             </td>
             <td>
-                @Html.ActionLink("Details", "Detials", new { id = item.GroupID }) 
+                @if (User.Identity.Name == item.Username)
+                {
+                    @Html.ActionLink("Delete", "Delete", "Post", new { id = item.GroupID }, null)
+                }
+                @Html.ActionLink("Details", "Detials", new { id = item.GroupID })
 
             </td>
         </tr>

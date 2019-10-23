@@ -48,9 +48,12 @@
                 @Html.DisplayFor(modelItem => item.PostDate)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details","Post", new {id=item.PostId}, null)|
-                @Html.ActionLink("Delete", "Delete", "Post", new {id=item.PostId}, null)
-        </tr>
+                    @Html.ActionLink("Delete", "Delete", "Post", new { id = item.PostId }, null)
+       
+                @Html.ActionLink("Details", "Details", "Post", new { id = item.PostId }, null)
+            </td>
+
+       </tr>
     }
 
 </table>

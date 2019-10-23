@@ -16,12 +16,14 @@ namespace MasterGroup.Services
             _userID = userId;
         }
 
-        public bool CreateMasterGroup(MasterGroupCreate model)
+        public bool CreateMasterGroup(MasterGroupCreate model, string username)
         {
+            //var user = ctx.Users.Single(e => e.Id == _userID.ToString());
             var entity = new MasterGroup.Data.MasterGroup()
             {
                 OwnerId = _userID,
                 Subject = model.Subject,
+                Username = username,
                 Name = model.Name,
                 Description = model.Description,
                 CheckItem1 = model.CheckItem1,
@@ -52,7 +54,7 @@ namespace MasterGroup.Services
                                 new MasterGroupItem
                                 {
                                     OwnerID = e.OwnerId,
-                                    Username = user.UserName,
+                                    Username = e.Username,
                                     GroupID = e.GroupId,
                                     Subject = e.Subject,
                                     Name = e.Name,
@@ -79,7 +81,7 @@ namespace MasterGroup.Services
                                 new MasterGroupItem
                                 {
                                     OwnerID = _userID,
-                                    Username = user.UserName,
+                                    Username = e.Username,
                                     GroupID = e.GroupId,
                                     Subject = e.Subject,
                                     Name = e.Name,

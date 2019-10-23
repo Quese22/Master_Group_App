@@ -13,6 +13,7 @@ namespace MasterGroup.Data
         public int GroupId { get; set; }
         [Required]
         public Guid OwnerId { get; set; }
+        public string Username { get; set; }
 
         [Required]
         [Display(Name="Subject of Mastery")]
