@@ -28,6 +28,7 @@ namespace MasterGroup.Services
                 CheckItem2 = model.CheckItem2,
                 CheckItem3 = model.CheckItem3,
                 CreatedUtc = DateTimeOffset.Now,
+              
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -64,6 +65,35 @@ namespace MasterGroup.Services
                 return query;
             }
         }
+        //hey we are in the service layer which is right before the database layer. we are going to create a method that is going to allow us to show a single master group item. so first we open the window with the using statemtnet allowing us to quickly reach into our database for a single user in the database. we then convert that persons user ID back into a string as when we pull it out it goes back into a guid form. after we have done that we make a variable of query that is helping us look for a single database item (master group) in our listes of master groups which is made known by the fact its in MGroups (our database of master GROUPS
+        public IEnumerable<MasterGroupItem> GetMasterGroupForAll()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var user = ctx.Users.Single(e => e.Id == _userID.ToString());
+                var query =
+                    ctx
+                        .MGroups
+                        .Select(
+                            e =>
+                                new MasterGroupItem
+                                {
+                                    OwnerID = _userID,
+                                    Username = user.UserName,
+                                    GroupID = e.GroupId,
+                                    Subject = e.Subject,
+                                    Name = e.Name,
+                                    Description = e.Description,
+                                    CreatedUtc = e.CreatedUtc,
+                                }
+                        ).ToList();
+
+
+                return query;
+            }
+        }
+
+
 
         public MasterGroupDetails GetMasterGroupById(int id)
         {
@@ -87,7 +117,6 @@ namespace MasterGroup.Services
                     };
             }
         }
-
         public bool UpdateMasterGroup(MasterGroupEdit model)
         {
             using (var ctx = new ApplicationDbContext())

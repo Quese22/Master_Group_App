@@ -246,6 +246,7 @@
     <Content Include="Views\Post\_Index.cshtml" />
     <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
+    <Content Include="Views\MasterGroup\IndexForAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

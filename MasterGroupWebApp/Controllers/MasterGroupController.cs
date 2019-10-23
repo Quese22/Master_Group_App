@@ -17,13 +17,27 @@ namespace MasterGroupWebApp.Controllers
         {
             var service = CreateMasterGroupService();
             var model = service.GetMasterGroup();
+
+            ViewBag.Mine = service.GetMasterGroupForAll();
+
+
             return View(model);
         }
-        //get method! down below
+        public ActionResult IndexForAll()
+        {
+            var service = CreateMasterGroupService();
+            var model = service.GetMasterGroupForAll();
+            return View(model);
+        }
+
+
+        //get method! down below//
         public ActionResult Create()
         {
             return View();
         }
+
+        //post method//
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(MasterGroupCreate model)

@@ -1,25 +1,10 @@
 ﻿@model IEnumerable<MasterGroup.Models.MasterGroupItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Groups";
 }
 
-<h2>My Groups</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-        @ViewBag.SaveResult
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
-}
-
+<h2>All-Groups</h2>
 <table class="table">
     <tr>
         <th>
@@ -59,12 +44,6 @@
                 @Html.DisplayFor(modelItem => item.CreatedUtc)
             </td>
             <td>
-                @if (User.Identity.Name == item.Username)
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.GroupID })
-                }
-
-                @Html.ActionLink("Edit", "Edit", new { id = item.GroupID })
                 @Html.ActionLink("Details", "Detials", new { id = item.GroupID }) 
 
             </td>
@@ -72,5 +51,5 @@
     }
 
 
+
 </table>
-@Html.Partial("../MasterGroup/IndexForAll", (List<MasterGroup.Models.MasterGroupItem>)ViewBag.Mine)
