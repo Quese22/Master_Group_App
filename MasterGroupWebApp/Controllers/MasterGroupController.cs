@@ -64,8 +64,10 @@ namespace MasterGroupWebApp.Controllers
             var model = svc.GetMasterGroupById(id);
 
             var svc2 = new PostServices(Guid.Parse(User.Identity.GetUserId()));
+            var sv3 = new GroupCheckListService(Guid.Parse(User.Identity.GetUserId()));
 
             ViewBag.PostList = svc2.GetPostByGroupId(id);
+            ViewBag.GCheckList = sv3.GetCheckLists(id);
 
             return View(model);
         }

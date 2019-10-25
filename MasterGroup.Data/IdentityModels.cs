@@ -45,6 +45,10 @@ namespace MasterGroup.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Entity<MasterGroup>()
+                .HasOptional(s => s.Quese)
+                .WithRequired(s => s.Quese);
         }
     }
     

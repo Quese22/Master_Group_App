@@ -54,13 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckListDetail.cs" />
+    <Compile Include="CheckListEdit.cs" />
+    <Compile Include="GroupCheckListCreate.cs" />
+    <Compile Include="GroupCheckListItem.cs" />
     <Compile Include="MGModels\MasterGroupCreate.cs" />
     <Compile Include="MGModels\MasterGroupDetails.cs" />
     <Compile Include="MGModels\MasterGroupEdit.cs" />
     <Compile Include="MGModels\MasterGroupItem.cs" />
-    <Compile Include="PostCreate.cs" />
-    <Compile Include="PostDetail.cs" />
-    <Compile Include="PostListItem.cs" />
+    <Compile Include="PostModels\PostCreate.cs" />
+    <Compile Include="PostModels\PostDetail.cs" />
+    <Compile Include="PostModels\PostListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

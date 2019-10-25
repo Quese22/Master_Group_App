@@ -19,23 +19,31 @@ namespace MasterGroup.Services
         public bool CreateMasterGroup(MasterGroupCreate model, string username)
         {
             //var user = ctx.Users.Single(e => e.Id == _userID.ToString());
-            var entity = new MasterGroup.Data.MasterGroup()
-            {
-                OwnerId = _userID,
-                Subject = model.Subject,
-                Username = username,
-                Name = model.Name,
-                Description = model.Description,
-                CheckItem1 = model.CheckItem1,
-                CheckItem2 = model.CheckItem2,
-                CheckItem3 = model.CheckItem3,
-                CreatedUtc = DateTimeOffset.Now,
-              
-            };
             using (var ctx = new ApplicationDbContext())
             {
+                var entity = new MasterGroup.Data.MasterGroup()
+                {
+                    OwnerId = _userID,
+                    Subject = model.Subject,
+                    Username = username,
+                    Name = model.Name,
+                    Description = model.Description,
+                    CheckItem1 = model.Commitment1,
+                    CheckItem2 = model.Commitment2,
+                    CheckItem3 = model.Commitment3,
+                    CreatedUtc = DateTimeOffset.Now
+                };
                 ctx.MGroups.Add(entity);
-                return ctx.SaveChanges() == 1;
+                ctx.SaveChanges();
+                entity.ListId = entity.GroupId;
+                entity.Quese = new GroupCheckLists
+                {
+                    Check1 = model.Check1,
+                    Check2 = model.Check2,
+                    Check3 = model.Check3
+                };
+                return ctx.SaveChanges() == 2;
+
             }
         }
 
@@ -149,12 +157,17 @@ namespace MasterGroup.Services
                         .MGroups
                         .Single(e => e.GroupId == groupId && e.OwnerId == _userID);
                 ctx.MGroups.Remove(entity);
+                var entity2 =
+                    ctx
+                    .MGLists
+                    .Single(e => e.ListId == groupId && e.ListId == groupId);
+                ctx.MGLists.Remove(entity2);
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 2;
             }
         }
     }
 }
-    
+
 
 

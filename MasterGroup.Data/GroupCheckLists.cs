@@ -10,11 +10,12 @@ namespace MasterGroup.Data
 {
     public class GroupCheckLists
     {
-        [Key]
+        [Key, ForeignKey("Quese")]
         public int ListId { get; set; }
-        [ForeignKey("Quese")]
-        public int GroupId { get; set; }
-        public virtual MasterGroup Quese { get; set; }
+        //[ForeignKey("Quese")]
+        //public int GroupID { get; set; }
+        public MasterGroup Quese { get; set; }
+
         [Display(Name ="Checklist Item #1")]
         public string Check1 {get;set;} //bool?
         [Display(Name = "Checklist Item #2")]

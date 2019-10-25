@@ -1,0 +1,58 @@
+﻿@model MasterGroup.Models.CheckListDetail
+
+@{
+    ViewBag.Title = "CheckListDetails";
+}
+
+<h2>CheckListDetails</h2>
+
+<div>
+    <h4>CheckListDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ListId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Check1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Check2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Check3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUtc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id= Model.ListId}, null) |
+    @Html.ActionLink("Back to Group", "Detials","MasterGroup",new { id = Model.ListId},null)
+</p>

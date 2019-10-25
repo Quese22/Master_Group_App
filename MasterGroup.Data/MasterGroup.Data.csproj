@@ -57,29 +57,12 @@
     <Compile Include="GroupCheckLists.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MasterGroup.cs" />
-    <Compile Include="Migrations\201910221541244_pleaseWork.cs" />
-    <Compile Include="Migrations\201910221541244_pleaseWork.Designer.cs">
-      <DependentUpon>201910221541244_pleaseWork.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910231956577_BootUp.cs" />
-    <Compile Include="Migrations\201910231956577_BootUp.Designer.cs">
-      <DependentUpon>201910231956577_BootUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910221541244_pleaseWork.resx">
-      <DependentUpon>201910221541244_pleaseWork.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910231956577_BootUp.resx">
-      <DependentUpon>201910231956577_BootUp.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

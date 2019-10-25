@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MasterGroup.Models.GroupCheckListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Weekly Checklist Items</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Check3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Check3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUtc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit","GroupList", new { id=item.ListId }) |
+                @Html.ActionLink("Details","CheckListDetails","GroupList",new { groupid = item.GroupId },null )
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+

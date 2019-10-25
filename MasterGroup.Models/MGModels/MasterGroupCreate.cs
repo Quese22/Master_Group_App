@@ -19,15 +19,27 @@ namespace MasterGroup.Models
         public string Description { get; set; }
         [Required]
         [MaxLength(150, ErrorMessage = "Too long, precise goals bring about measureable results!")]
-        [Display(Name = "Commitment Item #1")]
-        public string CheckItem1 { get; set; }
+        [Display(Name = "Commitment key #1")]
+        public string Commitment1 { get; set; }
         [Required]
         [MaxLength(150, ErrorMessage = "Too long, precise goals bring about measureable results!")]
-        [Display(Name = "Commitment Item #2")]
-        public string CheckItem2 { get; set; }
+        [Display(Name = "Commitment key #2")]
+        public string Commitment2 { get; set; }
         [Required]
         [MaxLength(150, ErrorMessage = "Too long, precise goals bring about measureable results!")]
-        [Display(Name = "Commitment Item #3")]
-        public string CheckItem3 { get; set; }
+        [Display(Name = "Commitment key #3")]
+        public string Commitment3 { get; set; }
+
+        public GroupCheckListItem Quese { get; set; }
+
+        [Required]
+        [Display(Name = "Checklist Item #1")]
+        public string Check1 { get; set; }
+        [Required]
+        [Display(Name = "Checklist Item #2")]
+        public string Check2 { get; set; }
+        [Required]
+        [Display(Name = "Checklist Item #3")]
+        public string Check3 { get; set; }
     }
 }

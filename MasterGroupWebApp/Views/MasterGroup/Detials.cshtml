@@ -4,7 +4,7 @@
     ViewBag.Title = "Detials";
 }
 
-<h2>Detials</h2>
+<h2>Details</h2>
 
 <div>
     <h4>MasterGroupDetails</h4>
@@ -76,9 +76,11 @@
 
     </dl>
 </div>
+@Html.Partial("../GroupList/_Index", (MasterGroup.Models.GroupCheckListItem[])ViewBag.GCheckList, new ViewDataDictionary { { "ListId", Model.GroupId } })
+
 @{
     @Html.Partial("../Post/_Create", new MasterGroup.Models.PostCreate(), new ViewDataDictionary { { "GroupId", Model.GroupId } }); //displays create page
-      //Copy of school photos to give to your FRIENDS mom.//
+                                                                                                                                    //Copy of school photos to give to your FRIENDS mom.//
 
     @Html.Partial("../Post/_Index", (MasterGroup.Models.PostListItem[])ViewBag.PostList, new ViewDataDictionary { { "Id", Model.GroupId } }); // displays index
 }
