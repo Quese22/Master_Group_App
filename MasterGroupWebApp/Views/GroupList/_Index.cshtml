@@ -7,7 +7,6 @@
 <h2>Weekly Checklist Items</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -48,9 +47,8 @@
                 @Html.DisplayFor(modelItem => item.ModifiedUtc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit","GroupList", new { id=item.ListId }) |
+                @Html.ActionLink("Edit", "Edit","GroupList", new { id=item.GroupId },null) |
                 @Html.ActionLink("Details","CheckListDetails","GroupList",new { groupid = item.GroupId },null )
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
     }

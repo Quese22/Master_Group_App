@@ -14,6 +14,7 @@
     <div class="form-horizontal">
         <h4>CheckListEdit</h4>
         <hr />
+        @Html.HiddenFor(model => model.ListId)
         <div class="form-group">
             @Html.LabelFor(model => model.Check1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -43,12 +44,17 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
-    </div>
-}
 
+
+
+    </div>
+
+}
 <div>
-    @Html.ActionLink("Back to Group", "Detials", "MasterGroup", new { id = Model.GroupId }, null)
+    @Html.ActionLink("Back to Group", "Detials", "MasterGroup", new { id = Model.ListId }, null)
 </div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

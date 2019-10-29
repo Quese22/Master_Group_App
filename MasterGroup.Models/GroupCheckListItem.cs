@@ -17,6 +17,7 @@ namespace MasterGroup.Models
         public string Check2 { get; set; }
         [Display(Name = "Checklist Item #1")]
         public string Check3 { get; set; }
+        [Display(Name = "Last Updated")]
         public DateTimeOffset? ModifiedUtc { get; set; }
 
 

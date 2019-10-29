@@ -30,11 +30,12 @@ namespace MasterGroup.Services
                     e =>
                     new GroupCheckListItem
                     {
-                        GroupId = e.ListId,
+                        ListId=e.ListId,
                         Check1 = e.Check1,
                         Check2 = e.Check2,
                         Check3 = e.Check3,
-
+                        ModifiedUtc= e.ModifiedUtc,
+                        GroupId=groupId
                     }
                     );
                 return query.ToArray();
@@ -54,7 +55,6 @@ namespace MasterGroup.Services
                 };
                 ctx.MGLists.Add(entity);
                 ctx.SaveChanges();
-                ctx.SaveChanges();
 
                 return ctx.SaveChanges() == 1;
             }   
@@ -69,10 +69,13 @@ namespace MasterGroup.Services
                 return
                 new CheckListDetail
                 {
+                    
                     ListId = entity.ListId,
                     Check1 = entity.Check1,
                     Check2 = entity.Check2,
-                    Check3 = entity.Check3
+                    Check3 = entity.Check3,
+                    ModifiedUtc=entity.ModifiedUtc
+              
                 };
             }
         }
@@ -88,6 +91,7 @@ namespace MasterGroup.Services
                 entity.Check1 = model.Check1;
                 entity.Check2 = model.Check2;
                 entity.Check3 = model.Check3;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }

@@ -66,9 +66,12 @@ namespace MasterGroupWebApp.Controllers
 
             var model = new CheckListEdit
             {
+                ListId=Jordan.ListId,
                 Check1 = Jordan.Check1,
                 Check2 = Jordan.Check2,
-                Check3 = Jordan.Check3
+                Check3 = Jordan.Check3,
+                ModifiedUtc = DateTimeOffset.UtcNow
+              
             };
 
             return View(model);
@@ -93,7 +96,7 @@ namespace MasterGroupWebApp.Controllers
             if(svc1)
             {
                 TempData["SaveResult"] = "Your Check List was updated.";
-                return RedirectToAction("Detials","MasterGroup");
+                return RedirectToAction("Detials","MasterGroup", new{ id = model.ListId});
             }
             ModelState.AddModelError("", "Your Check List could not be updated.");
 

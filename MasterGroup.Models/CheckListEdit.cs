@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace MasterGroup.Models
 {
    public class CheckListEdit
     {
-        public int GroupId { get; set; }
         public int ListId { get; set; }
         [Required]
         [Display(Name = "Checklist Item #1")]
@@ -20,6 +20,7 @@ namespace MasterGroup.Models
         [Required]
         [Display(Name = "Checklist Item #3")]
         public string Check3 { get; set; }
+        [Display(Name = "Last Updated")]
         public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

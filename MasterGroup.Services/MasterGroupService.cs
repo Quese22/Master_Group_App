@@ -112,7 +112,7 @@ namespace MasterGroup.Services
                 var entity =
                     ctx
                     .MGroups
-                    .Single(e => e.GroupId == id && e.OwnerId == _userID);
+                    .Single(e => e.GroupId == id);
 
                 return
                     new MasterGroupDetails
@@ -124,6 +124,7 @@ namespace MasterGroup.Services
                         CheckItem1 = entity.CheckItem1,
                         CheckItem2 = entity.CheckItem2,
                         CheckItem3 = entity.CheckItem3,
+                       
                     };
             }
         }

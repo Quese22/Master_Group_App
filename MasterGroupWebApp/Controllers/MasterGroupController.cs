@@ -58,7 +58,7 @@ namespace MasterGroupWebApp.Controllers
             return View(model);
         }
 
-        public ActionResult Detials(int id)
+        public ActionResult Detials(int id) 
         {
             var svc = CreateMasterGroupService();
             var model = svc.GetMasterGroupById(id);
