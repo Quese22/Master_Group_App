@@ -158,11 +158,6 @@ namespace MasterGroup.Services
                         .MGroups
                         .Single(e => e.GroupId == groupId && e.OwnerId == _userID);
                 ctx.MGroups.Remove(entity);
-                var entity2 =
-                    ctx
-                    .MGLists
-                    .Single(e => e.ListId == groupId && e.ListId == groupId);
-                ctx.MGLists.Remove(entity2);
 
                 return ctx.SaveChanges() == 2;
             }

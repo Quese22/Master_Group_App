@@ -3,64 +3,80 @@
 @{
     ViewBag.Title = "All Groups";
 }
-    <div class="tblHead">
-        <h2>All-Groups</h2>
-    </div>
-        <table class="table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Username)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Subject)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedUtc)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            @foreach (var item in Model)
-            {<tbody>
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-        <td>
-            @if (User.Identity.Name == item.Username)
-            {
-                @Html.ActionLink("Delete", "Delete", "Post", new { id = item.GroupID }, null)
-            }
-            @Html.ActionLink("Details", "Detials", "MasterGroup", new { id = item.GroupID }, null)
+<div class="tblHead">
+    <h2 class="titles1">All-Groups</h2>
+</div>
+<table class="table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="description">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedUtc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td class=" user" style="margin-right:5%; padding:2px;">
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="description">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedUtc)
+                </td>
+                <td>
+                    @if (User.Identity.Name == item.Username)
+                    {
+                        @Html.ActionLink("Delete", "Delete", "MasterGroup", new { id = item.GroupID }, new { @class = "btn btn-warning" })
+                    }
+                    @Html.ActionLink("Details", "Detials", "MasterGroup", new { id = item.GroupID },null)
 
-        </td>
-    </tr>
-</tbody>
-            }
+                </td>
+            </tr>
+        </tbody>
+    }
+
+
+</table>
+
 <style>
     .table-hover > tbody > tr:hover {
-   background-color: #a50b0b85;
-}
+        background-color: #a50b0b85;
+    }
+
+    .table-hover {
+    }
+
+    .description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .titles1 {
+        display: flex;
+        justify-content: center;
+        background-color: #a50b0b85;
+    }
 </style>
-
-
-        </table>

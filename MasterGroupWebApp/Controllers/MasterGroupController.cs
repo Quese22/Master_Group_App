@@ -114,7 +114,7 @@ namespace MasterGroupWebApp.Controllers
         }
 
         //Delete method requires a full detials preview before you delete the set up for view the detials first and then the set up to delete after
-        [ActionName("Delete")]
+        //[ActionName("Delete")]
         public ActionResult Delete(int id)
         {
             var svc = CreateMasterGroupService();
