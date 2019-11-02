@@ -16,6 +16,7 @@ namespace MasterGroup.Models
         public string Content { get; set; }
         [Display(Name = "Date of Creation")]
         public DateTimeOffset PostDate { get; set; }
+        public byte[] FileContent { get; set; }
 
     }
 }

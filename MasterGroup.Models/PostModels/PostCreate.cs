@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MasterGroup.Models
 {
@@ -16,5 +17,6 @@ namespace MasterGroup.Models
         [Display(Name ="Message")]
         [MaxLength(2000,ErrorMessage = "This isn't a novel, just a message.")]
         public string Content { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

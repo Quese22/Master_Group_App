@@ -28,5 +28,8 @@ namespace MasterGroup.Data
         public virtual MasterGroup Quese { get; set; }  //you connect the tables
         [Required]
         public DateTimeOffset PostDate { get; set; }
+
+        public string FileName { get; set; }
+        public byte[] FileContent { get; set; }
     }
 }

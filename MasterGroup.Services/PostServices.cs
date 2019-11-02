@@ -2,6 +2,7 @@
 using MasterGroup.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,10 @@ namespace MasterGroup.Services
 
         public bool CreatePost(PostCreate model)
         {
+            Stream fs = model.File.InputStream;
+            BinaryReader br = new BinaryReader(fs);
+            byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
             using (var ctx = new ApplicationDbContext())
             {
                 var username = ctx.Users.Single(e => e.Id == _userId.ToString()).UserName;
@@ -26,6 +31,7 @@ namespace MasterGroup.Services
                 var entity =
                     new Post()
                     {
+                        FileContent=bytes,
                         OwnerId = _userId,
                         Username = username,
                         GroupId = model.GroupID,
@@ -55,6 +61,7 @@ namespace MasterGroup.Services
                             Content = e.Content,
                             PostId = e.PostId,
                             PostDate = e.PostDate,
+                            FileContent=e.FileContent
                         }
 
 
@@ -75,6 +82,7 @@ namespace MasterGroup.Services
                         e =>
                         new PostListItem
                         {
+                            FileContent=e.FileContent,
                             Title = e.Title,
                             Content = e.Content,
                             PostId = e.PostId,
@@ -106,7 +114,8 @@ namespace MasterGroup.Services
                         Title = entity.Title,
                         Content = entity.Content,
                         PostDate = entity.PostDate,
-                        GroupId=entity.GroupId
+                        GroupId=entity.GroupId,
+                        FileContent=entity.FileContent
                     };
             }
         }

@@ -8,58 +8,52 @@
 
 <div>
     <h4>PostDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PostId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GroupId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GroupId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostDate)
-        </dd>
-
-    </dl>
 </div>
+    <hr />
+   
+@if (Model.FileContent != null)
+{
+    var base64 = Convert.ToBase64String(Model.FileContent);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    <img src=@imgSrc , class="Postimg" />
+}
+else
+{
+    <img src="" />
+}
+<br />
+<br />
+<table class="table">
+    <thead class="thead-">
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.PostId)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Username)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Title)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Content)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(model => model.PostId)</td>
+            <td>@Html.DisplayFor(model => model.Username)</td>
+            <td>@Html.DisplayFor(model => model.Title)</td>
+            <td>@Html.DisplayFor(model => model.Content)</td>
+        </tr>
+    </tbody>
+</table>
+@Html.DisplayFor(model => model.PostDate)
+<br />
+<hr />
 <p>
-    @Html.ActionLink("Back to Group", "Detials","MasterGroup",new { id = Model.GroupId },null)
+    @Html.ActionLink("Back to Group", "Detials", "MasterGroup", new { id = Model.GroupId }, null)
 </p>
+
+<style>
+    .Postimg {
+        max-width: 15%;
+        max-height: 15%;
+    }
+    .thead-{
+        background-color: #a50b0b85;
+    }
+</style>

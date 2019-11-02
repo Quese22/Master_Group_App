@@ -36,20 +36,20 @@ namespace MasterGroup.Data
 
 
         [Required]
-        [MaxLength(150, ErrorMessage ="Too long, precise goals bring about measureable results")]
-        [Display(Name="Commitment Item #1")]
+        [MaxLength(150, ErrorMessage = "Too long, precise commitments bring about measureable results")]
+        [Display(Name="Commitment #1")]
         public string CheckItem1 { get; set; }
 
 
         [Required]
-        [MaxLength(150, ErrorMessage = "Too long, precise goals bring about measureable results")]
-        [Display(Name = "Commitment Item #2")]
+        [MaxLength(150, ErrorMessage = "Too long, precise commitments bring about measureable results")]
+        [Display(Name = "Commitment #2")]
         public string CheckItem2 { get; set; }
 
 
         [Required]
-        [MaxLength(150, ErrorMessage = "Too long, precise goals bring about measureable results")]
-        [Display(Name = "Commitment Item #3")]
+        [MaxLength(150, ErrorMessage = "Too long, precise commitments bring about measureable results")]
+        [Display(Name = "Commitment #3")]
         public string CheckItem3 { get; set; }
 
 
