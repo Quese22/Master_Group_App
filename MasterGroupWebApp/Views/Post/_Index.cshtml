@@ -6,29 +6,31 @@
 
 <h2>Posts   </h2>
 <div class=" posts">
-        @foreach (var item in Model)
-        {
-           
+    @foreach (var item in Model)
+    {
 
-            <div class="cardP">
-                <h5 class="card-header">@Html.DisplayFor(modelItem => item.PostId)|@Html.DisplayFor(modelItem => item.Title)</h5>
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Username)</h5>
-                    @if (item.FileContent != null)
-                    {
+
+        <div class="cardP">
+            <h5 class="card-header">@Html.DisplayFor(modelItem => item.PostId)|@Html.DisplayFor(modelItem => item.Title)</h5>
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Username)</h5>
+                @if (item.FileContent != null)
+                {
                     var base64 = Convert.ToBase64String(item.FileContent); var imgSrc = String.Format("data:image/gif;base64,{0}", base64);<img src=@imgSrc , class="Postimg" />
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     <img src="" />
-                    }
-                    <p class="card-text"> @Html.DisplayFor(modelItem => item.Content)</p>
-                    <a href="#"> @Html.ActionLink("Delete", "Delete", "Post", new { id = item.PostId }, null)</a>
-                    <a href="#"> @Html.ActionLink("Details", "Details", "Post", new { id = item.PostId }, null)</a>
-                </div>
+                }
+                <p class="card-text"> @Html.DisplayFor(modelItem => item.Content)</p>
+                <a href="#"> @Html.ActionLink("Delete", "Delete", "Post", new { id = item.PostId }, null)</a>
+                <a href="#"> @Html.ActionLink("Details", "Details", "Post", new { id = item.PostId }, null)</a>
             </div>
-     }
-</div>  
+        </div>
+    
+        <br />
+    }
+</div> 
 
 <style>
     .Postimg {
@@ -45,7 +47,7 @@
        margin:2em;
        flex-wrap:wrap;    
     }
-    .cardP{
-        
+    .card-header{
+        background-color: #a50b0b85;
     }
 </style>

@@ -8,48 +8,68 @@
 <h2>Create a Post</h2>
 
 
-@using (Html.BeginForm("Create", "Post", null, FormMethod.Post, new { enctype= "multipart/form-data"}))
+@using (Html.BeginForm("Create", "Post", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     {
         Model.GroupID = (int)ViewData["GroupId"];
         @Html.HiddenFor(model => model.GroupID)
     }
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">
+            <div class="form-group">
+                @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="File" id="image_file" />
+                    @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                </div>
+                    
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </li>
+    </ul>
 
-    <div class="form-horizontal">
-        
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="File" id="image_file" />
-                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
-            </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<style>
+    .list-group-horizontal{
+        background-color: #ffffff;
+    }
+    .list-group-item{
+        background-color: #ffffff;
+        color: #212659;
+    }
+    .btn.btn-success{
+        background-color: #28a745;
+        color: #ffffff;
+        margin-top:2em;
+    }
+</style>

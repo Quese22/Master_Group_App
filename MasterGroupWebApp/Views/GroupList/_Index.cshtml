@@ -16,9 +16,9 @@
             <p class="card-text">@Html.DisplayFor(modelItem => item.ModifiedUtc)</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">@Html.DisplayFor(modelItem => item.Check1)</li>
-            <li class="list-group-item">@Html.DisplayFor(modelItem => item.Check2)</li>
-            <li class="list-group-item">@Html.DisplayFor(modelItem => item.Check3)</li>
+            <li class="list-group-item">1.)@Html.DisplayFor(modelItem => item.Check1)</li>
+            <li class="list-group-item">2.)@Html.DisplayFor(modelItem => item.Check2)</li>
+            <li class="list-group-item">3.)@Html.DisplayFor(modelItem => item.Check3)</li>
         </ul>
         <div class="card-body">
 
@@ -32,5 +32,10 @@
         </div>
     </div>
  }
+<style>
+        .list-group-horizontal{
+            background-color:aliceblue;
+    }
+</style>
 
 
