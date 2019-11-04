@@ -23,7 +23,11 @@
                     <img src="" />
                 }
                 <p class="card-text"> @Html.DisplayFor(modelItem => item.Content)</p>
-                <a href="#"> @Html.ActionLink("Delete", "Delete", "Post", new { id = item.PostId }, null)</a>
+
+                @if (User.Identity.Name == item.Username)
+                {
+                    <a href="#"> @Html.ActionLink("Delete", "Delete", "Post", new { id = item.PostId }, null)</a>
+                }
                 <a href="#"> @Html.ActionLink("Details", "Details", "Post", new { id = item.PostId }, null)</a>
             </div>
         </div>
@@ -49,5 +53,9 @@
     }
     .card-header{
         background-color: #a50b0b85;
+    }
+    .card-title{
+        font-family:'Comic Sans MS';
+        
     }
 </style>

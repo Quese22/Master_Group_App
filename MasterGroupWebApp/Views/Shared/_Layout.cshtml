@@ -18,11 +18,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 @Html.ActionLink("MasterGroup", "Index", "MasterGroup", new { area = "" }, new { @class = "nav-item nav-link active" }) <span class="sr-only">(current)</span>
-                @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
             </div>
         </div>
-        @Html.Partial("_LoginPartial")
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <id class="no-thank-you"> @Html.Partial("_LoginPartial")</id>
+            </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
@@ -40,5 +41,8 @@
 <style>
     .backkkk{
         background-color: #eff0f1;
+    }
+    .no-thank-you{
+        margin-left:40em;
     }
 </style>

@@ -21,5 +21,7 @@ namespace MasterGroup.Models
         public string CheckItem3 { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+        public string Username { get; set; }
+        
     }
 }

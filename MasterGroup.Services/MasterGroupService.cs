@@ -31,7 +31,7 @@ namespace MasterGroup.Services
                     CheckItem1 = model.Commitment1,
                     CheckItem2 = model.Commitment2,
                     CheckItem3 = model.Commitment3,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.UtcNow
                 };
                 ctx.MGroups.Add(entity);
                 ctx.SaveChanges();
@@ -124,7 +124,8 @@ namespace MasterGroup.Services
                         CheckItem1 = entity.CheckItem1,
                         CheckItem2 = entity.CheckItem2,
                         CheckItem3 = entity.CheckItem3,
-                       
+                       Username=entity.Username,
+                       CreatedUtc=entity.CreatedUtc
                     };
             }
         }

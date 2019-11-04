@@ -6,7 +6,7 @@
 <div class="tblHead">
     <h2 class="titles1">All-Groups</h2>
 </div>
-<table class="table-hover">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -34,13 +34,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
-                <td class=" user" style="margin-right:5%; padding:2px;">
+                <td>
                     @Html.DisplayFor(modelItem => item.Subject)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td class="description">
+                <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
@@ -51,7 +51,7 @@
                     {
                         @Html.ActionLink("Delete", "Delete", "MasterGroup", new { id = item.GroupID }, new { @class = "btn btn-warning" })
                     }
-                    @Html.ActionLink("Details", "Detials", "MasterGroup", new { id = item.GroupID },null)
+                    @Html.ActionLink("Details", "Detials", "MasterGroup", new { id = item.GroupID }, null)
 
                 </td>
             </tr>
@@ -79,4 +79,18 @@
         justify-content: center;
         background-color: #a50b0b85;
     }
+
+    /*.td {
+        text-align: center;
+        margin: 2em;
+        padding: 1em;
+    }
+
+    .th {
+        margin-left: 10em;
+    }
+
+    .td.user {
+        margin-left: 5em;
+    }*/
 </style>

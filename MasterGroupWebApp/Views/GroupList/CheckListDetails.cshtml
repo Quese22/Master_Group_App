@@ -4,19 +4,24 @@
     ViewBag.Title = "CheckListDetails";
 }
 
-<h2>CheckListDetails</h2>
+<h2>Check List Details</h2>
 
-<div>
-    <h4>CheckListDetail</h4>
+<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+       
+            @Html.DisplayNameFor(model => model.ListId)
+      
+
+       
+            @Html.DisplayFor(model => model.ListId)
+       
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Group Checklist Items</h5>
+        <p class="card-text"><div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ListId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ListId)
-        </dd>
+       
 
         <dt>
             @Html.DisplayNameFor(model => model.Check1)
@@ -51,8 +56,16 @@
         </dd>
 
     </dl>
+</div></p>
+    </div>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new {id= Model.ListId}, null) |
-    @Html.ActionLink("Back to Group", "Detials","MasterGroup",new { id = Model.ListId},null)
+    <button type="button" class="btn-btn">@Html.ActionLink("Edit", "Edit", new { id = Model.ListId }, null)</button> |
+    @Html.ActionLink("Back to Group", "Detials", "MasterGroup", new { id = Model.ListId }, null)
 </p>
+<style>
+    .btn-btn{
+background-color: #a50b0b85;
+    }
+</style>

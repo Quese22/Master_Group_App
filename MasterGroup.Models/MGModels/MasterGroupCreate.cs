@@ -9,6 +9,7 @@ namespace MasterGroup.Models
 {
     public class MasterGroupCreate
     {
+        public string Username { get; set; }
         [Required]
         [Display(Name = "Subject of Mastery")]
         public string Subject { get; set; }
@@ -29,6 +30,7 @@ namespace MasterGroup.Models
         [MaxLength(150, ErrorMessage = "Too long, precise goals bring about measureable results!")]
         [Display(Name = "Commitment key #3")]
         public string Commitment3 { get; set; }
+      
 
         public GroupCheckListItem Quese { get; set; }
 

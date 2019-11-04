@@ -20,10 +20,13 @@ namespace MasterGroup.Services
 
         public bool CreatePost(PostCreate model)
         {
-            Stream fs = model.File.InputStream;
-            BinaryReader br = new BinaryReader(fs);
-            byte[] bytes = br.ReadBytes((Int32)fs.Length);
-
+            byte[] bytes = null;
+            if (model.File != null)
+            {
+                Stream fs = model.File.InputStream;
+                BinaryReader br = new BinaryReader(fs);
+                bytes = br.ReadBytes((Int32)fs.Length);
+            }
             using (var ctx = new ApplicationDbContext())
             {
                 var username = ctx.Users.Single(e => e.Id == _userId.ToString()).UserName;
@@ -52,12 +55,13 @@ namespace MasterGroup.Services
                 var query =
                     ctx
                     .MGPosts
-                    .Where(e => e.OwnerId == _userId)
+                    //.Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                         new PostListItem
                         {
                             Title = e.Title,
+                            Username=e.Username,
                             Content = e.Content,
                             PostId = e.PostId,
                             PostDate = e.PostDate,
@@ -77,13 +81,14 @@ namespace MasterGroup.Services
                 var query =
                     ctx
                     .MGPosts
-                    .Where(e => e.OwnerId == _userId && e.GroupId == GroupId)
+                    .Where(e =>e.GroupId == GroupId)
                     .Select(
                         e =>
                         new PostListItem
                         {
                             FileContent=e.FileContent,
                             Title = e.Title,
+                            Username=e.Username,
                             Content = e.Content,
                             PostId = e.PostId,
                             PostDate = e.PostDate,
@@ -105,7 +110,7 @@ namespace MasterGroup.Services
                 var entity =
                     ctx
                     .MGPosts
-                    .Single(e => e.PostId == id && e.OwnerId == _userId);
+                    .Single(e => e.PostId == id);
                 return
                     new PostDetail
                     {
