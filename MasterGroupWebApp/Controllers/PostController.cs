@@ -30,8 +30,11 @@ namespace MasterGroupWebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PostCreate model)
         {
-            if (!ModelState.IsValid) return View(model);
-            ModelState.AddModelError("", "Post could not be created.");
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Post could not be created.");
+            return RedirectToAction("Detials", "MasterGroup", new { id = model.GroupID });
+            }
 
             var service = CreatePostService();
             if(service.CreatePost(model))

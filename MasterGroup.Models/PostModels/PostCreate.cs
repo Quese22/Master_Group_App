@@ -12,6 +12,7 @@ namespace MasterGroup.Models
     {
         public int GroupID { get; set; }
         [Required]
+        [MinLength(10, ErrorMessage = "A good title will help others find your question too")]
         public string Title { get; set; }
         [Required]
         [Display(Name ="Message")]
